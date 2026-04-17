@@ -1,0 +1,127 @@
+D:\Anacode3\envs\myenvpy_3.10\python.exe E:\python_projec\hello-agents-main\code\chapter13\helloagents-trip-planner\backend\run.py
+INFO:     Will watch for changes in these directories: ['E:\\python_projec\\hello-agents-main\\code\\chapter13\\helloagents-trip-planner\\backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [37600] using WatchFiles
+
+============================================================
+🚀 HelloAgents智能旅行助手 v1.0.0
+============================================================
+应用名称: HelloAgents智能旅行助手
+版本: 1.0.0
+服务器: 0.0.0.0:8000
+高德地图API Key: 已配置
+LLM API Key: 已配置
+LLM Base URL: https://ark.cn-beijing.volces.com/api/v3
+LLM Model: doubao-seed-1-6-lite-251015
+日志级别: INFO
+
+✅ 配置验证通过
+
+============================================================
+📚 API文档: http://localhost:8000/docs
+📖 ReDoc文档: http://localhost:8000/redoc
+============================================================
+
+INFO:     Started server process [32524]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+
+============================================================
+📥 收到旅行规划请求:
+   城市: 赣州
+   日期: 2026-03-21 - 2026-03-23
+   天数: 3
+============================================================
+
+🔄 获取多智能体系统实例...
+🔄 开始初始化多智能体旅行规划系统...
+✅ LLM服务初始化成功
+   提供商: openai
+   模型: doubao-seed-1-6-lite-251015
+  - 创建共享MCP工具...
+🔑 使用直接传递的环境变量: AMAP_MAPS_API_KEY
+📝 使用 Stdio 传输 (命令): uvx amap-mcp-server
+🔗 连接到 MCP 服务器...
+✅ 连接成功！
+🔌 连接已断开
+  - 创建景点搜索Agent...
+✅ 工具 'amap' 已注册。
+  - 创建天气查询Agent...
+✅ 工具 'amap' 已注册。
+  - 创建酒店推荐Agent...
+✅ 工具 'amap' 已注册。
+  - 创建行程规划Agent...
+✅ 多智能体系统初始化成功
+   景点搜索Agent: 1 个工具
+   天气查询Agent: 1 个工具
+   酒店推荐Agent: 1 个工具
+🚀 开始生成旅行计划...
+
+============================================================
+🚀 开始多智能体协作规划旅行...
+目的地: 赣州
+日期: 2026-03-21 至 2026-03-23
+天数: 3天
+偏好: 自然风光, 休闲
+============================================================
+
+📍 步骤1: 搜索景点...
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+Processing request of type ListToolsRequest
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+📝 使用 Stdio 传输 (命令): uvx amap-mcp-server
+🔗 连接到 MCP 服务器...
+✅ 连接成功！
+🔌 连接已断开
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+景点搜索结果: [TOOL_CALL:amap:keywords=自然风光,city=赣州]...
+
+🌤️  步骤2: 查询天气...
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+天气查询结果: [TOOL_CALL:amap:action=weather, city=赣州]...
+
+🏨 步骤3: 搜索酒店...
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+📝 使用 Stdio 传输 (命令): uvx amap-mcp-server
+🔗 连接到 MCP 服务器...
+✅ 连接成功！
+🔌 连接已断开
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+酒店搜索结果: [TOOL_CALL:amap:keywords=经济型酒店,city=赣州]...
+
+📋 步骤4: 生成行程计划...
+--core-llm.py--self.model:doubao-seed-1-6-lite-251015
+行程规划结果: ```json
+{
+  "city": "赣州",
+  "start_date": "2026-03-21",
+  "end_date": "2026-03-23",
+  "days": [
+    {
+      "date": "2026-03-21",
+      "day_index": 0,
+      "description": "第一天：游览城市近郊丹霞与森林景观，体验赣州核心自然风光",
+      "transportation": "公交（18路、109路）+ 步行",
+      "accommodation": "经济型酒店",
+      "hotel": {
+  ...
+
+============================================================
+✅ 旅行计划生成完成!
+============================================================
+
+✅ 旅行计划生成成功,准备返回响应
+
+INFO:     127.0.0.1:61567 - "POST /api/trip/plan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61567 - "GET /api/poi/photo?name=%E9%80%9A%E5%A4%A9%E5%B2%A9%E6%99%AF%E5%8C%BA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61732 - "GET /api/poi/photo?name=%E9%98%B3%E6%98%8E%E6%B9%96%E6%99%AF%E5%8C%BA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61733 - "GET /api/poi/photo?name=%E8%B5%A3%E6%B1%9F%E6%BA%90%E8%87%AA%E7%84%B6%E4%BF%9D%E6%8A%A4%E5%8C%BA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61734 - "GET /api/poi/photo?name=%E4%B8%89%E7%99%BE%E5%B1%B1%E6%99%AF%E5%8C%BA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61735 - "GET /api/poi/photo?name=%E9%A9%AC%E7%A5%96%E5%B2%A9%E6%99%AF%E5%8C%BA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61731 - "GET /api/poi/photo?name=%E5%B3%B0%E5%B1%B1%E5%9B%BD%E5%AE%B6%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9B%AD HTTP/1.1" 200 OK

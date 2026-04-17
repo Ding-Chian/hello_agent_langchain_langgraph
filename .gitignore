@@ -1,0 +1,19 @@
+# 排除环境变量文件（绝对不能上传！）
+.env
+.env.local
+.env.*
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE 配置
+.idea/
+.vscode/
+
+# 虚拟环境
+venv/
+env/
+Anacode3/
